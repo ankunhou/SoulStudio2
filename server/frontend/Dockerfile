@@ -1,20 +1,20 @@
-# Stage 0, "build-stage", based on Bun, to build and compile the frontend
-FROM oven/bun:1 AS build-stage
+FROM node:25.8 AS build-stage
+
+RUN npm install -g pnpm
+ENV PNPM_CONFIG_LOGLEVEL=info
+ENV PATH="/root/.pnpm/bin:$PATH"
 
 WORKDIR /app
 
-COPY package.json bun.lock /app/
-
+COPY package.json pnpm-workspace.yaml pnpm-lock.yaml /app/
 COPY frontend/package.json /app/frontend/
 
-WORKDIR /app/frontend
-
-RUN bun install
+RUN pnpm install --filter frontend
 
 COPY ./frontend /app/frontend
 ARG VITE_API_URL
 
-RUN bun run build
+RUN pnpm install --filter frontend
 
 
 # Stage 1, based on Nginx, to have only the compiled app, ready for production with Nginx

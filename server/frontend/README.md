@@ -9,8 +9,8 @@ The frontend is built with [Vite](https://vitejs.dev/), [React](https://reactjs.
 ## Quick Start
 
 ```bash
-bun install
-bun run dev
+pnpm install
+pnpm run dev
 ```
 
 * Then open your browser at http://localhost:5173/.
@@ -62,7 +62,7 @@ bash ./scripts/generate-client.sh
 * To generate the frontend client, run:
 
 ```bash
-bun run generate-client
+pnpm run generate-client
 ```
 
 * Commit the changes.

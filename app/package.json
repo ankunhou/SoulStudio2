@@ -1,5 +1,5 @@
 {
-  "name": "soulstudio",
+  "name": "soulstudio-app",
   "description": "SoulStudio - 智能工作室前端应用，基于 React + TypeScript + Vite 构建，提供可视化工作流程编辑和 AI 智能辅助功能",
   "private": true,
   "version": "0.0.0",
