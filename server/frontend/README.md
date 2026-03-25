@@ -1,121 +1,94 @@
-# FastAPI Project - Frontend
 
-The frontend is built with [Vite](https://vitejs.dev/), [React](https://reactjs.org/), [TypeScript](https://www.typescriptlang.org/), [TanStack Query](https://tanstack.com/query), [TanStack Router](https://tanstack.com/router) and [Tailwind CSS](https://tailwindcss.com/).
+# FastAPI 项目 - 前端
 
-## Requirements
+前端使用 [Vite](https://vitejs.dev/)、[React](https://reactjs.org/)、[TypeScript](https://www.typescriptlang.org/)、[TanStack Query](https://tanstack.com/query)、[TanStack Router](https://tanstack.com/router) 和 [Tailwind CSS](https://tailwindcss.com/) 构建。
 
-- [Bun](https://bun.sh/) (recommended) or [Node.js](https://nodejs.org/)
+## 环境要求
 
-## Quick Start
+- [pnpm](https://pnpm.io/)（推荐）或 [Node.js](https://nodejs.org/)
+
+## 快速开始
 
 ```bash
 pnpm install
 pnpm run dev
 ```
 
-* Then open your browser at http://localhost:5173/.
+然后在浏览器中打开 http://localhost:5173/
 
-Notice that this live server is not running inside Docker, it's for local development, and that is the recommended workflow. Once you are happy with your frontend, you can build the frontend Docker image and start it, to test it in a production-like environment. But building the image at every change will not be as productive as running the local development server with live reload.
+注意：这个开发服务器不是在 Docker 内运行的，它是用于本地开发的推荐工作流程。
 
-Check the file `package.json` to see other available options.
+## 生成客户端
 
-### Removing the frontend
+### 自动生成
 
-If you are developing an API-only app and want to remove the frontend, you can do it easily:
-
-* Remove the `./frontend` directory.
-
-* In the `compose.yml` file, remove the whole service / section `frontend`.
-
-* In the `compose.override.yml` file, remove the whole service / section `frontend` and `playwright`.
-
-Done, you have a frontend-less (api-only) app. 🤓
-
----
-
-If you want, you can also remove the `FRONTEND` environment variables from:
-
-* `.env`
-* `./scripts/*.sh`
-
-But it would be only to clean them up, leaving them won't really have any effect either way.
-
-## Generate Client
-
-### Automatically
-
-* Activate the backend virtual environment.
-* From the top level project directory, run the script:
+- 激活后端虚拟环境
+- 从项目根目录运行脚本：
 
 ```bash
 bash ./scripts/generate-client.sh
 ```
 
-* Commit the changes.
+- 提交更改
 
-### Manually
+### 手动生成
 
-* Start the Docker Compose stack.
+- 启动 Docker Compose 栈
 
-* Download the OpenAPI JSON file from `http://localhost/api/v1/openapi.json` and copy it to a new file `openapi.json` at the root of the `frontend` directory.
+- 从 `http://localhost/api/v1/openapi.json` 下载 OpenAPI JSON 文件，复制到 `frontend` 目录下的 `openapi.json` 文件
 
-* To generate the frontend client, run:
+- 生成前端客户端：
 
 ```bash
 pnpm run generate-client
 ```
 
-* Commit the changes.
+- 提交更改
 
-Notice that everytime the backend changes (changing the OpenAPI schema), you should follow these steps again to update the frontend client.
+注意：每次后端更改（更改 OpenAPI 架构）时，都应该再次执行这些步骤来更新前端客户端。
 
-## Using a Remote API
+## 使用远程 API
 
-If you want to use a remote API, you can set the environment variable `VITE_API_URL` to the URL of the remote API. For example, you can set it in the `frontend/.env` file:
+如果要使用远程 API，可以设置环境变量 `VITE_API_URL` 为远程 API 的 URL。例如，在 `frontend/.env` 文件中设置：
 
 ```env
 VITE_API_URL=https://api.my-domain.example.com
 ```
 
-Then, when you run the frontend, it will use that URL as the base URL for the API.
+## 代码结构
 
-## Code Structure
+前端代码结构如下：
 
-The frontend code is structured as follows:
+- `frontend/src` - 主要前端代码
+- `frontend/src/assets` - 静态资源
+- `frontend/src/client` - 生成的 OpenAPI 客户端
+- `frontend/src/components` - 前端的各种组件
+- `frontend/src/hooks` - 自定义 hooks
+- `frontend/src/routes` - 前端的不同路由，包含页面
 
-* `frontend/src` - The main frontend code.
-* `frontend/src/assets` - Static assets.
-* `frontend/src/client` - The generated OpenAPI client.
-* `frontend/src/components` -  The different components of the frontend.
-* `frontend/src/hooks` - Custom hooks.
-* `frontend/src/routes` - The different routes of the frontend which include the pages.
+## 使用 Playwright 进行端到端测试
 
-## End-to-End Testing with Playwright
-
-The frontend includes initial end-to-end tests using Playwright. To run the tests, you need to have the Docker Compose stack running. Start the stack with the following command:
+前端包含使用 Playwright 的初始端到端测试。运行测试需要 Docker Compose 栈运行。使用以下命令启动栈：
 
 ```bash
 docker compose up -d --wait backend
 ```
 
-Then, you can run the tests with the following command:
+然后使用以下命令运行测试：
 
 ```bash
-bunx playwright test
+playwright test
 ```
 
-You can also run your tests in UI mode to see the browser and interact with it running:
+也可以在 UI 模式下运行测试，查看浏览器并与之交互：
 
 ```bash
-bunx playwright test --ui
+playwright test --ui
 ```
 
-To stop and remove the Docker Compose stack and clean the data created in tests, use the following command:
+使用以下命令停止并删除 Docker Compose 栈并清理测试中创建的数据：
 
 ```bash
 docker compose down -v
 ```
 
-To update the tests, navigate to the tests directory and modify the existing test files or add new ones as needed.
-
-For more information on writing and running Playwright tests, refer to the official [Playwright documentation](https://playwright.dev/docs/intro).

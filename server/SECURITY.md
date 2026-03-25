@@ -1,29 +1,31 @@
-# Security Policy
 
-Security is very important for this project and its community. 🔒
+# 安全策略
 
-Learn more about it below. 👇
+安全对这个项目及其社区非常重要。🔒
 
-## Versions
+了解更多信息如下。👇
 
-The latest version or release is supported.
+## 版本
 
-You are encouraged to write tests for your application and update your versions frequently after ensuring that your tests are passing. This way you will benefit from the latest features, bug fixes, and **security fixes**.
+支持最新版本或发布版本。
 
-## Reporting a Vulnerability
+鼓励你为应用程序编写测试，并在确保测试通过后频繁更新版本。这样你将受益于最新功能、错误修复和**安全修复**。
 
-If you think you found a vulnerability, and even if you are not sure about it, please report it right away by sending an email to: security@tiangolo.com. Please try to be as explicit as possible, describing all the steps and example code to reproduce the security issue.
+## 报告漏洞
 
-I (the author, [@tiangolo](https://twitter.com/tiangolo)) will review it thoroughly and get back to you.
+如果你认为发现了漏洞，即使你不确定，请立即通过发送邮件至：security@tiangolo.com 报告。请尽量详细说明，描述所有步骤和示例代码以重现安全问题。
 
-## Public Discussions
+我（作者，[@tiangolo](https://twitter.com/tiangolo)）将彻底审查并回复你。
 
-Please restrain from publicly discussing a potential security vulnerability. 🙊
+## 公开讨论
 
-It's better to discuss privately and try to find a solution first, to limit the potential impact as much as possible.
+请避免公开讨论潜在的安全漏洞。🙊
+
+最好先私下讨论并尝试找到解决方案，以尽可能限制潜在影响。
 
 ---
 
-Thanks for your help!
+感谢你的帮助！
 
-The community and I thank you for that. 🙇
+社区和我感谢你。🙇
+

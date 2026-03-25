@@ -1,3 +1,4 @@
+
 # SoulStudio 前端
 
 基于 React + TypeScript + Vite 构建的现代化前端应用。
@@ -8,8 +9,18 @@
 - **TypeScript** - 类型安全的 JavaScript 超集
 - **Vite** - 极速前端构建工具
 - **Tailwind CSS** - 实用优先的 CSS 框架
+
+### 已安装依赖（待集成）
+
 - **React Flow (@xyflow/react)** - 流程图和节点编辑库
-- **Vercel AI SDK** - AI 功能集成
+- **Vercel AI SDK (ai)** - AI 功能集成
+
+## 当前状态
+
+这是一个正在开发中的前端项目，目前包含：
+- 基础的 React + TypeScript + Vite 项目结构
+- Tailwind CSS 样式配置
+- 简单的演示应用（计数器）
 
 ## 快速开始
 
@@ -65,7 +76,7 @@ app/
 └── eslint.config.js    # ESLint 配置
 ```
 
-## 核心功能特性
+## 计划功能
 
 ### 1. 可视化工作流程编辑
 - 基于 React Flow 实现的拖拽式节点编辑器
@@ -82,83 +93,6 @@ app/
 - 支持深色/浅色主题切换
 - 适配移动设备和桌面端
 
-### 4. 类型安全
-- 完整的 TypeScript 类型定义
-- 严格的类型检查配置
-- 提供更好的开发体验和代码质量
-
-## 开发指南
-
-### 添加新组件
-
-在 `src` 目录下创建新的组件文件，例如 `src/components/MyComponent.tsx`：
-
-```tsx
-import React from 'react'
-
-interface MyComponentProps {
-  title: string
-}
-
-// 我的组件 - 示例组件
-export const MyComponent: React.FC<MyComponentProps> = ({ title }) => {
-  return <div>{title}</div>
-}
-```
-
-### 使用 React Flow
-
-```tsx
-import React, { useCallback, useRef } from 'react'
-import ReactFlow, {
-  useNodesState,
-  useEdgesState,
-  addEdge,
-  Controls,
-  Background,
-} from '@xyflow/react'
-import '@xyflow/react/dist/style.css'
-
-// 初始化节点数据
-const initialNodes = [
-  { id: '1', position: { x: 0, y: 0 }, data: { label: '节点 1' } },
-  { id: '2', position: { x: 0, y: 100 }, data: { label: '节点 2' } },
-]
-
-// 初始化连线数据
-const initialEdges = [{ id: 'e1-2', source: '1', target: '2' }]
-
-// 流程图组件
-const FlowEditor = () => {
-  const reactFlowWrapper = useRef<HTMLDivElement>(null)
-  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes)
-  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges)
-
-  // 处理新连线创建
-  const onConnect = useCallback(
-    (params) => setEdges((eds) => addEdge(params, eds)),
-    [setEdges]
-  )
-
-  return (
-    <div ref={reactFlowWrapper} style={{ width: '100%', height: '500px' }}>
-      <ReactFlow
-        nodes={nodes}
-        edges={edges}
-        onNodesChange={onNodesChange}
-        onEdgesChange={onEdgesChange}
-        onConnect={onConnect}
-      >
-        <Controls />
-        <Background />
-      </ReactFlow>
-    </div>
-  )
-}
-
-export default FlowEditor
-```
-
 ## 主题自定义
 
 项目使用 CSS 变量实现主题支持，可以在 `src/index.css` 中自定义：
@@ -173,7 +107,6 @@ export default FlowEditor
   --accent: #aa3bff;         /* 主色调 */
   --accent-bg: rgba(170, 59, 255, 0.1);    /* 强调色背景 */
   --accent-border: rgba(170, 59, 255, 0.5); /* 强调色边框 */
-  /* ... 更多变量 */
 }
 ```
 
@@ -187,3 +120,4 @@ export default FlowEditor
 ## 许可证
 
 MIT 许可证
+
