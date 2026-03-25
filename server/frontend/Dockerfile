@@ -14,7 +14,6 @@ RUN pnpm install --filter frontend
 COPY ./frontend /app/frontend
 ARG VITE_API_URL
 
-RUN pnpm install --filter frontend
 
 
 # Stage 1, based on Nginx, to have only the compiled app, ready for production with Nginx
